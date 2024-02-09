@@ -1,13 +1,12 @@
 package main;
 
 import entidade.*;
-import persistencia.*;
+import persistencia.EmprestimoDevolucaoDAO;
+import thread.ThreadTest;
+import thread.ThreadVerificarAtraso;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -71,47 +70,60 @@ public class Main {
 //        livroDao.alterar(livro1);
 //
 //        livroDao.listar().stream().forEach(System.out::println);
-        Cliente cliente = new Cliente();
-        cliente.setId(1701038789458L);
+//        Cliente cliente = new Cliente();
+//        cliente.setId(1701038789458L);
+//
+//        Livro livro = new Livro();
+//        livro.setId(1701305675563L);
+//
+//        Autor autor = new Autor();
+//        autor.setId(1701297995121L);
+//
+//        Biblioteca biblioteca = new Biblioteca();
+//        biblioteca.setId(1701042709557L);
+//
+//        EmprestimoDevolucao emprestimo = new EmprestimoDevolucao();
+//        emprestimo.setCliente(cliente);
+//        emprestimo.setBiblioteca(biblioteca);
+//        emprestimo.setLivro(livro);
+//
+//        EmprestimoDevolucaoDAO emprestimoDao = new EmprestimoDevolucaoDAO();
+//        EmprestimoDevolucaoDAO emprestimo = (EmprestimoDevolucaoDAO) emprestimoDao.listar();
+//
+//        for (EmprestimoDevolucaoDAO emprestimos: emprestimo) {
+//            System.out.println(emprestimo);
+//        }
 
-        Livro livro = new Livro();
-        livro.setId(1701305675563L);
-
-        Autor autor = new Autor();
-        autor.setId(1701297995121L);
-
-        Biblioteca biblioteca = new Biblioteca();
-        biblioteca.setId(1701042709557L);
-
-        EmprestimoDevolucao emprestimo = new EmprestimoDevolucao();
-        emprestimo.setCliente(cliente);
-        emprestimo.setBiblioteca(biblioteca);
-        emprestimo.setLivro(livro);
-
-        EmprestimoDevolucaoDAO emprestimoDao = new EmprestimoDevolucaoDAO();
-//        emprestimoDao.emprestar(emprestimo);
-        emprestimo.setId(1701551525944L);
-        emprestimoDao.devolucao(emprestimo);
-
-        List<EmprestimoDevolucao> emprestimos = emprestimoDao.listar();
-
-        for(EmprestimoDevolucao e : emprestimos){
-
-            System.out.println("--------------------");
-            System.out.println("Nome: "+ e.getCliente().getNome());
-            System.out.println("CPF: "+ e.getCliente().getCpfCnpj());
-
-            System.out.println("Biblioteca: "+e.getBiblioteca().getRazaoSocial());
-            System.out.println("Endereco: "+ e.getBiblioteca().getEndereco());
-
-            System.out.println("Titulo: "+ e.getLivro().getTitulo());
-            System.out.println("Data Publicacao: "+ e.getLivro().getDtPublicacao());
-            System.out.println("Autor: "+ e.getLivro().getAutor().getNome());
-
-            System.out.println("ID: "+ e.getId());
-            System.out.println("Data Emprestimo: "+e.getDtEmprestimo());
-            System.out.println("Data Devolucao: "+e.getDtDevolucao());
-
+        ThreadVerificarAtraso verificarAtraso = new ThreadVerificarAtraso();
+        verificarAtraso.run();
+////        emprestimoDao.emprestar(emprestimo);
+//        emprestimo.setId(1701551525944L);
+//        emprestimoDao.devolucao(emprestimo);
+//
         }
-    }
+//        for(EmprestimoDevolucao e : emprestimos){
+//
+//            System.out.println("--------------------");
+//            System.out.println("Nome: "+ e.getCliente().getNome());
+//            System.out.println("CPF: "+ e.getCliente().getCpfCnpj());
+//
+//            System.out.println("Biblioteca: "+e.getBiblioteca().getRazaoSocial());
+//            System.out.println("Endereco: "+ e.getBiblioteca().getEndereco());
+//
+//            System.out.println("Titulo: "+ e.getLivro().getTitulo());
+//            System.out.println("Data Publicacao: "+ e.getLivro().getDtPublicacao());
+//            System.out.println("Autor: "+ e.getLivro().getAutor().getNome());
+//
+//            System.out.println("ID: "+ e.getId());
+//            System.out.println("Data Emprestimo: "+e.getDtEmprestimo());
+//            System.out.println("Data Devolucao: "+e.getDtDevolucao());
+//
+//        }
+
+//        ThreadVerificarAtraso atraso = new ThreadVerificarAtraso();
+//        atraso.start();
+
+
+
+
 }
